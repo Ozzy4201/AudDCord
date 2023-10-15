@@ -64,9 +64,10 @@ async def on_message(message):
         await message.channel.send("No attachments!")
         await client.process_commands(message)
 
-    except:
+    except Exception as E:
         await message.channel.send("ERROR:" + sys.exc_info()[0])
         await client.process_commands(message)
+        print(f"Exception {e} Occured at {currentTime}")
 
 
 @client.event
@@ -93,8 +94,9 @@ async def on_raw_reaction_add(message):
     except IndexError:
         await message.channel.send("No attachments!")
 
-    except:
+    except Exception as e:
         await message.channel.send("Something went wrong!")
+        print(f"Exception {e} Occured at {currentTime}")
 
 @client.command()
 async def songcheck(ctx):
